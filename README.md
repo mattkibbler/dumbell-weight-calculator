@@ -1,43 +1,110 @@
-# Astro Starter Kit: Minimal
+# Dumbbell Weight Calculator
 
-```sh
-npm create astro@latest -- --template minimal
+A little web app that calculates optimal plate combinations for adjustable dumbbells. Easily figures out exactly which plates to load on your dumbbells to achieve your target weight.
+
+## Features
+
+- **Plate Management** - Add, edit, and delete your available weight plates with quantities
+- **Smart Calculations** - Uses Dynamic Programming to find the optimal combination using the fewest plates
+- **Balanced Loading** - Ensures plates are distributed evenly on both sides of the dumbbell bar for balance
+- **Two Modes**:
+    - **Single Dumbbell** - Calculate for one dumbbell
+    - **Combined** - Calculate for two identical dumbbells (splits target weight equally across the dumbells)
+- **Local Storage** - Your plate collection is saved in the localStorage of your browser
+
+## Tech Stack
+
+- **[Astro](https://astro.build/)
+- **[Svelte](https://svelte.dev/)
+- **[Tailwind CSS](https://tailwindcss.com/)
+- **TypeScript
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18.20.8 or higher
+- npm 9.6.5 or higher
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The app will be available at `http://localhost:4321/`
 
-## 🚀 Project Structure
+### Other Commands
 
-Inside of your Astro project, you'll see the following folders and files:
+```bash
+# Build for production
+npm run build
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+# Preview production build
+npm run preview
+
+# Format code with Prettier
+npm run format
+
+# Check code formatting
+npm run format:check
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## How to Use
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### 1. Add Your Plates
 
-Any static assets, like images, can be placed in the `public/` directory.
+In the **Manage Plates** section:
 
-## 🧞 Commands
+- Enter the weight of a plate type (in KG)
+- Enter how many of that plate you have
+- Click **Add Plate**
 
-All commands are run from the root of the project, from a terminal:
+Default plates are provided: 1.25kg, 2.5kg, 5kg, and 10kg.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### 2. Calculate Target Weight
 
-## 👀 Want to learn more?
+In the **Calculate Weight** section:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Enter your target weight in KG
+- Choose **Single Dumbbell** or **Combined (2 dumbbells)**
+- Click **Calculate**
+
+### 3. View Results
+
+The app shows:
+
+- A color-coded list of plates needed
+- Total weight achieved
+- A visual representation of how to load the plates on your dumbbell(s)
+
+## How It Works
+
+The calculator uses a **Dynamic Programming algorithm** (bounded knapsack) to find the optimal plate combination:
+
+1. Calculates weight needed per side of the dumbbell bar
+2. Accounts for quantity limits of each plate type
+3. Finds the combination using the fewest plates
+4. Ensures all dumbbells are balanced and identical (in combined mode)
+
+If the target weight is impossible with your available plates, the app will let you know.
+
+## Development
+
+### Code Formatting
+
+This project uses Prettier with:
+
+- Tabs for indentation (width: 4 spaces)
+- Single quotes
+- Plugins for Astro and Svelte
+
+Run `npm run format` to format all code.
+
+## License
+
+MIT
