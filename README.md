@@ -107,4 +107,4 @@ Run `npm run format` to format all code.
 
 ## License
 
-MIT
+GPL-3.0 - This project is licensed under the GNU General Public License v3.0. Any modifications or distributions must remain open source.
